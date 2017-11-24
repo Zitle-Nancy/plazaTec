@@ -4,9 +4,104 @@
 	<title>PlazaTec</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/grid.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
+	<header>
+		<h1 class="text-center">Plaza-Tec</h1>
+	</header>
+	<main class="container">
+		<section class="row">
+			<div class="">
+				<form>
+					<div>
+						<label>Nombre:</label>
+						<input type="text" 
+								maxlength="15"
+								value="Empresa X Y Z">
+					</div>
+					<div>
+						<label>Dirección:</label>
+						<input type="text" 
+								maxlength="35"
+								value="Calle Río Lerma 4, Piso 6, Colonia Cuauhtémoc, CP 53000, Ciudadde México">
+					</div>
+					<div>
+						<label>Correo:</label>
+						<input type="email" 
+							   maxlength="20"
+							   value="empresaxyz@gmail.com">
+					</div>
+					<div>
+						<label>Telefono:</label>
+						<input type="tel" 
+							   maxlength="13"
+							   value="0445533678909">
+					</div>
+				</form>
+			</div>
+		</section>
+		<section class="row">
+			<h2 class="text-center">Métodos​ ​de​ ​pago</h2>
+			<div class="col-12">
+				<input type="radio" id="oxxo" name="pagos">
+				<label for="oxxo">OXXO</label>
+			</div>
+			<div class="col-12">
+				<input type="radio" id="tarjeta" name="pagos">
+				<label for="tarjeta">Tarjeta de crédito</label>
+				<form id="form-card">
+					<div>
+						<label>Número de tarjeta</label>
+						<input type="text">
+					</div>
+					<div>
+						<label>Nombre de titular</label>
+						<input type="text">
+					</div>
+					<div>
+						<label>Fecha de expiración</label>
+						<input type="text">
+					</div>
+					<div>
+						<label>CVV</label>
+						<input type="text">
+					</div>
+				</form>
+			</div>
+			<div class="col-12">
+				<input type="radio" id="paypal" name="pagos">
+				<label for="paypal">PayPal</label>
+				<h3></h3>
+			</div>
+			<div class="col-12">
+				<input type="radio" id="efectivo" name="pagos">
+				<label for="efectivo">Efectivo</label>
+			</div>
+		</section>
+		<section class="row borde2">
+			<div class="col-12">
+				<div class="row">
+					<div class="col-4 borde1">
+						imagen
+					</div>
+					<div class="col-4 borde2">
+						descripcion
+					</div>
+					<div class="col-4 borde1">
+						precio
+					</div>
+				</div>
+				<div class="borde3 row">
+					<label>Total:</label><label>$1400</label>
+				</div>
+				<div class="row">
+					<button>Pagar</button>
+				</div>
+			</div>
+		</section>
+	</main>
 	<script src="js/app.js"></script>
 </body>
 </html>
