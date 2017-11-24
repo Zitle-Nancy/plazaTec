@@ -20,6 +20,7 @@
 	min-height: 7px;
 	padding: 12px;
 	float: left;
+	position: relative;
 }
 /*formula para obtener la columna 
 (numerodecolumnas/totaldecolumnas)/100*/
@@ -59,3 +60,42 @@
 .col-12{
 	width: 100%;
 }
+/* offset */
+
+.col-offset-1{
+	left: 8.33%;
+}
+.col-offset-2{
+	left: 16.66%;
+}
+.col-offset-3{
+	left: 25%;
+}
+.col-offset-4{
+	left: 33.33%;
+}
+.col-offset-5{
+	left: 41.66%;
+}
+.col-offset-6{
+	left: 50%;
+}
+.col-offset-7{
+	left: 58.33%
+}
+.col-offset-8{
+	left: 66.66%;
+}
+.col-offset-9{
+	left: 75%;
+}
+.col-offset-10{
+	left: 83.33%;
+}
+.col-offset-11{
+	left: 91.66%;
+}
+.col-offset-12{
+	left: 100%;
+}
+
