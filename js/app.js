@@ -68,9 +68,17 @@
 
 	function placeOrder(){
 		if(validate){
-			alert('Pedido Realizado');
+						swal(
+			  'Good job!',
+			  'Pedido Finalizado',
+			  'success'
+			)
 		}else{
-			alert('Faltan datos por completar');
+			swal(
+			  'Oops...',
+			  'Faltan datos por completar',
+			  'error'
+			)
 		}
 	}
 
