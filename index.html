@@ -19,6 +19,7 @@
 						<label class="label">Nombre:</label>
 						<input  class="input-form"
 								type="text" 
+								required 
 								maxlength="15"
 								value="Empresa X Y Z">
 					</div>
@@ -26,6 +27,7 @@
 						<label class="label">Dirección:</label>
 						<input  class="input-form"
 								type="text" 
+								required 
 								maxlength="35"
 								value="Calle Río Lerma 4, Piso 6, Colonia Cuauhtémoc, CP 53000, Ciudadde México">
 					</div>
@@ -34,12 +36,14 @@
 						<input class="input-form"
 							   type="email" 
 							   maxlength="20"
+							   required 
 							   value="empresaxyz@gmail.com">
 					</div>
 					<div class="form-group">
 						<label class="label">Telefono:</label>
 						<input class="input-form" 
 							   type="tel" 
+							   required 
 							   maxlength="13"
 							   value="0445533678909">
 					</div>
@@ -49,13 +53,19 @@
 		<section class="row">
 			<h2 class="text-center">Métodos​ ​de​ ​pago</h2>
 			<div class="col-offset-1 col-10">
-				<input type="radio" id="oxxo" name="pagos">
+				<input type="radio" 
+					   id="oxxo" 
+					   class="radio"
+					   name="pagos">
 				<label for="oxxo">OXXO</label>
 			</div>
 			<div class="col-offset-1 col-10">
-				<input type="radio" id="tarjeta" name="pagos">
-				<label for="tarjeta">Tarjeta de crédito</label>
-				<form id="form-card">
+				<input type="radio" 
+					   id="card" 
+					   name="pagos" 
+					   class="radio">
+				<label for="card">Tarjeta de crédito</label>
+				<form id="form-card" class="hidden">
 					<div class="form-group">
 						<label class="label">
 							Número de tarjeta
@@ -81,13 +91,19 @@
 				</form>
 			</div>
 			<div class="col-offset-1 col-10">
-				<input type="radio" id="paypal" name="pagos">
+				<input type="radio" 
+					   class="radio"
+					   id="paypal"
+					   name="pagos">
 				<label for="paypal">PayPal</label>
 				<h3></h3>
 			</div>
 			<div class="col-offset-1 col-10">
-				<input type="radio" id="efectivo" name="pagos">
-				<label for="efectivo">Efectivo</label>
+				<input type="radio"
+					   id="cash" 
+					   class="radio"
+					   name="pagos">
+				<label for="cash">Efectivo</label>
 			</div>
 		</section>
 		<section class="row borde2">
