@@ -60,16 +60,18 @@
 				<label for="oxxo">OXXO</label>
 			</div>
 			<div class="col-offset-1 col-10">
-				<input type="radio" 
-					   id="card" 
-					   name="pagos" 
-					   class="radio">
-				<label for="card">Tarjeta de crédito</label>
-				<div id="card-visa" class="hidden">
-					<img class="images-card" src="img/Visa.png">
-				</div>
-				<div id="master-card" class="hidden">
-					<img class="images-card" src="img/master.png">
+				<div class="credit-card">
+					<input type="radio" 
+						   id="card" 
+						   name="pagos" 
+						   class="radio">
+					<label for="card">Tarjeta de crédito</label>
+					<span id="card-visa" class="hidden">
+						<img class="images-card hidden" src="img/Visa.png" alt="Visa">
+					</span>
+					<span id="master-card" class="hidden">
+						<img class="images-card hidden" src="img/master.png" alt="Mastercard">
+					</span>
 				</div>	
 				<div class="row margin-top hidden" id="form-card">
 					<form  class="col-offset-1 col-10">
@@ -87,7 +89,8 @@
 							<label class="label">
 								Nombre de titular
 							</label>
-							<input class="input-form" 
+							<input id="input-card-name" 
+								   class="input-form" 
 								   type="text"
 								   maxlength="25" 
 								   required>
@@ -96,13 +99,38 @@
 							<label class="label">
 								Fecha de expiración
 							</label>
-							<input class="input-form" 
-									type="text"
-									required>
+							<select id="mes" class="input-form select">
+								<option disabled selected>Mes</option>
+								<option value="1">01</option>
+								<option value="2">02</option>
+								<option value="3">03</option>
+								<option value="4">04</option>
+								<option value="5">05</option>
+								<option value="6">06</option>
+								<option value="7">07</option>
+								<option value="8">08</option>
+								<option value="9">09</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+							</select>
+							<select id="anio" class="input-form select">
+								<option disabled selected>Año</option>
+								<option value="1">2024</option>
+								<option value="2">2023</option>
+								<option value="3">2022</option>
+								<option value="4">2021</option>
+								<option value="5">2020</option>
+								<option value="6">2019</option>
+								<option value="7">2018</option>
+								<option value="8">2017</option>
+							</select>
 						</div>
 						<div class="form-group">
 							<label class="label">CVV</label>
-							<input class="input-form"
+							<input id="input-cvv"
+							maxlength="4" 
+								   class="input-form"
 								   type="text" 
 								   required>
 						</div>
@@ -143,7 +171,7 @@
 						</p>
 						<br>
 						<p>
-							<label class="label">Cantidad</label> 2
+							<label>Cantidad</label> 2
 							<strong class="right">$3,380.95</strong>
 						</p>
 					</div>
@@ -163,7 +191,7 @@
 						</p>
 						<br>
 						<p>
-							<label class="label">Cantidad</label> 1
+							<label>Cantidad</label> 1
 							<strong class="right"> $1,495.31</strong>
 						</p>
 					</div>
@@ -183,7 +211,7 @@
 						</p>
 						<br>
 						<p>
-							<label class="label">Cantidad</label> 1
+							<label>Cantidad</label> 1
 							<strong class="right">$449.00 C</strong>
 						</p>
 					</div>
@@ -197,7 +225,7 @@
 			</div>
 		</section>
 		<div class="row">
-			<button class="btn btn-primary btn-width ">
+			<button id="btn-pay" class="btn btn-primary btn-width">
 				Finalizar Pedido
 			</button>
 		</div>
