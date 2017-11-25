@@ -15,27 +15,31 @@
 		<section class="row">
 			<div class="col-offset-1 col-10">
 				<form>
-					<div>
-						<label>Nombre:</label>
-						<input type="text" 
+					<div class="form-group">
+						<label class="label">Nombre:</label>
+						<input  class="input-form"
+								type="text" 
 								maxlength="15"
 								value="Empresa X Y Z">
 					</div>
-					<div>
-						<label>Dirección:</label>
-						<input type="text" 
+					<div class="form-group">
+						<label class="label">Dirección:</label>
+						<input  class="input-form"
+								type="text" 
 								maxlength="35"
 								value="Calle Río Lerma 4, Piso 6, Colonia Cuauhtémoc, CP 53000, Ciudadde México">
 					</div>
-					<div>
-						<label>Correo:</label>
-						<input type="email" 
+					<div class="form-group">
+						<label class="label">Correo:</label>
+						<input class="input-form"
+							   type="email" 
 							   maxlength="20"
 							   value="empresaxyz@gmail.com">
 					</div>
-					<div>
-						<label>Telefono:</label>
-						<input type="tel" 
+					<div class="form-group">
+						<label class="label">Telefono:</label>
+						<input class="input-form" 
+							   type="tel" 
 							   maxlength="13"
 							   value="0445533678909">
 					</div>
@@ -44,38 +48,44 @@
 		</section>
 		<section class="row">
 			<h2 class="text-center">Métodos​ ​de​ ​pago</h2>
-			<div class="col-12">
+			<div class="col-offset-1 col-10">
 				<input type="radio" id="oxxo" name="pagos">
 				<label for="oxxo">OXXO</label>
 			</div>
-			<div class="col-12">
+			<div class="col-offset-1 col-10">
 				<input type="radio" id="tarjeta" name="pagos">
 				<label for="tarjeta">Tarjeta de crédito</label>
 				<form id="form-card">
-					<div>
-						<label>Número de tarjeta</label>
-						<input type="text">
+					<div class="form-group">
+						<label class="label">
+							Número de tarjeta
+						</label>
+						<input class="input-form" type="text">
 					</div>
-					<div>
-						<label>Nombre de titular</label>
-						<input type="text">
+					<div class="form-group">
+						<label class="label">
+							Nombre de titular
+						</label>
+						<input class="input-form" type="text">
 					</div>
-					<div>
-						<label>Fecha de expiración</label>
-						<input type="text">
+					<div class="form-group">
+						<label class="label">
+							Fecha de expiración
+						</label>
+						<input class="input-form" type="text">
 					</div>
-					<div>
-						<label>CVV</label>
-						<input type="text">
+					<div class="form-group">
+						<label class="label">CVV</label>
+						<input class="input-form" type="text">
 					</div>
 				</form>
 			</div>
-			<div class="col-12">
+			<div class="col-offset-1 col-10">
 				<input type="radio" id="paypal" name="pagos">
 				<label for="paypal">PayPal</label>
 				<h3></h3>
 			</div>
-			<div class="col-12">
+			<div class="col-offset-1 col-10">
 				<input type="radio" id="efectivo" name="pagos">
 				<label for="efectivo">Efectivo</label>
 			</div>
