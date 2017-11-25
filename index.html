@@ -65,10 +65,10 @@
 					   name="pagos" 
 					   class="radio">
 				<label for="card">Tarjeta de crédito</label>
-				<div class="hidden">
+				<div id="card-visa" class="hidden">
 					<img class="images-card" src="img/Visa.png">
 				</div>
-				<div class="hidden">
+				<div id="master-card" class="hidden">
 					<img class="images-card" src="img/master.png">
 				</div>	
 				<div class="row margin-top hidden" id="form-card">
@@ -77,7 +77,9 @@
 							<label class="label">
 								Número de tarjeta
 							</label>
-							<input class="input-form" 
+							<input id="input-card" 
+								   maxlength="16" 
+								   class="input-form" 
 								   type="text" 
 								   required>
 						</div>
