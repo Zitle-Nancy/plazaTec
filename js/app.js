@@ -5,6 +5,8 @@
 	var inputCard = document.getElementById('input-card');
 	var inputCardName = document.getElementById('input-card-name');
 	var inputCvv = document.getElementById('input-cvv');
+	var month = document.getElementById('month');
+	var year = document.getElementById('year');
 	var btnPay = document.getElementById('btn-pay');
 	btnPay.addEventListener('click', placeOrder);
 	inputCvv.addEventListener('keyup',validateCvv);
@@ -66,8 +68,8 @@
 			validate = true;
 		}
 	};
-
 	function placeOrder(){
+
 		if(validate){
 			swal(
 			  'Good job!',
@@ -77,6 +79,9 @@
 			inputCard.value = " ";
 			inputCardName.value = " ";
 			inputCvv.value = " ";
+			month.value = 0;
+			year.value = 0;
+			
 		}else{
 			swal(
 			  'Oops...',
