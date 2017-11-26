@@ -14,8 +14,10 @@
 	var cardMaster = document.getElementById('master-card');
 	var cardAmerica = document.getElementById('america-card');
 	var btnPay = document.getElementById('btn-pay');
-	var inputQuantity = document.getElementsByClassName('input-quantity');
-	var priceProduct = document.getElementsByClassName('price-product');
+	var quantityProductOne = document.getElementById('quantity-product-one');
+	var priceProductOne = document.getElementById('price-product-one');
+	quantityProductOne.addEventListener('keydown',validateNumber);
+	quantityProductOne.addEventListener('keyup',showTotalPrice);
 	month.addEventListener('change',validateDate);
 	year.addEventListener('change',validateDate);
 	btnPay.addEventListener('click', placeOrder);
@@ -28,12 +30,7 @@
 	for (var i = 0; i < longitud; i++) {
 		radioButton[i].addEventListener('change', getFormCard);
 	};
-
-	for (var j = 0; j < inputQuantity.length; j++) {
-		inputQuantity[j].addEventListener('keydown',validateNumber);
-		inputQuantity[j].addEventListener('keyup',showTotalPrice);
-	};
-
+	
 	function getFormCard() {
 		var formCard = document.getElementById('form-card');
 		if (this.id === 'card' && this.checked) {
@@ -100,23 +97,17 @@
 	function showTotalPrice(e) {
 		var numberQuantity =  this.value;
 		var total;
-		var numberProduct;
-		var defaultPrice = document.getElementsByClassName('default-price');
-		for (var k = 0; k < priceProduct.length; k++) {
-			numberProduct = priceProduct[k].innerText.replace(/\$?[\$\,]/g, '');
-			if(numberQuantity.trim().length > 0 && numberQuantity !== " ") {
-				
-				total = parseFloat(inputQuantity) * parseFloat(numberProduct);
-				priceProduct[k].innerText = '$' + total.toString();
-				console.log(numberProduct);
-			}else{
-				// buscar expresion regular
-				for(var ePrice = 0; ePrice < defaultPrice.length; ePrice++){
-					priceProduct[k].innerText = defaultPrice[ePrice].innerText;
-				}
-				
-			}
-		};
+		var defaultPriceOne = document.getElementById('default-price-one');
+		
+		if(numberQuantity.trim().length > 0 && numberQuantity !== " ") {
+			var numberProductOne = priceProductOne.innerText.replace(/\$?[\$\,]/g, '');
+			total = parseFloat(numberQuantity) * parseFloat(numberProductOne);
+			priceProductOne.innerText = '$' + total.toString();
+			console.log(numberProductOne);
+		}else{
+			// buscar expresion regular
+			priceProductOne.innerText = defaultPriceOne.innerText;
+		}
 	};
 	function placeOrder() {
 		var validate = isValidate && isValidateCvv && isValidateNameCard && isValidateDate
