@@ -1,5 +1,8 @@
 (function(){
-	var validate;
+	var isValidate = false;
+	var isValidateCvv = false;
+	var isValidateNameCard = false;
+	var isValidateDate = false;
 	var radioButton = document.getElementsByClassName('radio');
 	var longitud = radioButton.length;
 	var inputCard = document.getElementById('input-card');
@@ -7,6 +10,11 @@
 	var inputCvv = document.getElementById('input-cvv');
 	var month = document.getElementById('month');
 	var year = document.getElementById('year');
+	month.addEventListener('change',validateDate);
+	year.addEventListener('change',validateDate);
+	var cardVisa = document.getElementById('card-visa');
+	var cardMaster = document.getElementById('master-card');
+	var cardAmerica = document.getElementById('america-card');
 	var btnPay = document.getElementById('btn-pay');
 	btnPay.addEventListener('click', placeOrder);
 	inputCvv.addEventListener('keyup',validateCvv);
@@ -33,44 +41,57 @@
 		}	
 	};
 	function validateLetter(e) {
+		var validateName = e.key;
 		var regLetter = /^[A-Za-z ]+$/;
-		if(!regLetter.test(e.key)){
+
+		if(validateName.trim().length > 0){
+			isValidateNameCard = true;
+		};
+		if(!regLetter.test(validateName)){
 			e.preventDefault();
 		};
+		
 	};
-	function validateCardNumber(){
+	function validateDate() {
+		if((month.value && year.value) > 0){
+			isValidateDate = true;
+		}
+	};
+	function validateCardNumber() {
 		var regCardVisa = /^4\d{3}-?\d{4}-?\d{4}-?\d{4}$/;
 		var regMasterCard = /^5[1-5]\d{2}-?\d{4}-?\d{4}-?\d{4}$/;
+		var regAmericaCard = /^3[47][0-9]{13}$/;
 		var numberCard = this.value;
-		var cardVisa = document.getElementById('card-visa');
-		var cardMaster = document.getElementById('master-card');
 		if (regCardVisa.test(numberCard)){
 			cardVisa.classList.remove('hidden');
-			validate = true;
+			isValidate = true;
 		} else {
 			cardVisa.classList.add('hidden');
-			validate = false;
 		}
 		if (regMasterCard.test(numberCard)){
 			cardMaster.classList.remove('hidden');
-			validate = true;
+			isValidate = true;
 		} else{
 			cardMaster.classList.add('hidden');
-			validate = false;
+		}
+		if (regAmericaCard.test(numberCard)){
+			cardAmerica.classList.remove('hidden');
+			isValidate = true;
+		} else{
+			cardAmerica.classList.add('hidden');
 		}
 	};
-	function validateCvv(e){
+	function validateCvv(e) {
 		var regCvv = /^[0-9]{3,4}$/;
 		if(!regCvv.test(this.value)){
 			e.preventDefault();
-			validate = false;
+			isValidateCvv = false;
 		}else{
-			validate = true;
+			isValidateCvv = true;
 		}
 	};
-	function placeOrder(){
-
-		if(validate){
+	function placeOrder() {
+		if(isValidate && isValidateCvv && isValidateNameCard && isValidateDate){
 			swal(
 			  'Good job!',
 			  'Pedido Finalizado',
@@ -81,7 +102,13 @@
 			inputCvv.value = " ";
 			month.value = 0;
 			year.value = 0;
-			
+			isValidate = false;
+		 	isValidateCvv = false;
+			isValidateNameCard = false;
+			isValidateDate = false;
+			cardAmerica.classList.add('hidden');
+			cardMaster.classList.add('hidden');
+			cardVisa.classList.add('hidden');
 		}else{
 			swal(
 			  'Oops...',
