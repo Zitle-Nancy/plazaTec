@@ -74,7 +74,7 @@
 						<img class="images-card hidden" src="img/master.png" alt="Mastercard">
 					</span>
 					<span id="america-card" class="hidden">
-						<img class="images-card hidden" src="img/america.png" alt="America Express">
+						<img class="images-card hidden" src="img/america.png" alt="American Express">
 					</span>
 				</div>	
 				<div class="row margin-top hidden" id="form-card">
@@ -133,7 +133,7 @@
 						<div class="form-group">
 							<label class="label">CVV</label>
 							<input id="input-cvv"
-							maxlength="4" 
+								   maxlength="4" 
 								   class="input-form"
 								   type="text" 
 								   required>
@@ -174,9 +174,21 @@
 							completo, IEEE 802.11n, Android, Pizarra, Android 6.0, Negro, Gris)
 						</p>
 						<br>
+						<span>Precio Unitario</span>
+						<!--$3,380.95-->
+						<strong class="right" id="default-price-one">$3,380.95</strong>
+						<br>
 						<p>
-							<label>Cantidad</label> 2
-							<strong class="right">$3,380.95</strong>
+							<label>Cantidad</label>
+							<span><input class="input-form input-quantity"
+										 type="text" 
+										 id="quantity-product-one">
+							</span>
+							
+							<strong class="right" 
+								    id="price-product-one">
+								    	$338095
+							</strong>
 						</p>
 					</div>
 				</div>
@@ -222,7 +234,7 @@
 				</div>
 				<div class="row">
 					<div class="col-offset-6 col-6">
-						<label class="label">Total:</label>
+						<strong>Total:</strong>
 						<strong class="right">$5325.26</strong>
 					</div>
 				</div>

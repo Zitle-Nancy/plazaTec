@@ -10,12 +10,16 @@
 	var inputCvv = document.getElementById('input-cvv');
 	var month = document.getElementById('month');
 	var year = document.getElementById('year');
-	month.addEventListener('change',validateDate);
-	year.addEventListener('change',validateDate);
 	var cardVisa = document.getElementById('card-visa');
 	var cardMaster = document.getElementById('master-card');
 	var cardAmerica = document.getElementById('america-card');
 	var btnPay = document.getElementById('btn-pay');
+	var quantityProductOne = document.getElementById('quantity-product-one');
+	var priceProductOne = document.getElementById('price-product-one');
+	quantityProductOne.addEventListener('keydown',validateNumber);
+	quantityProductOne.addEventListener('keyup',showTotalPrice);
+	month.addEventListener('change',validateDate);
+	year.addEventListener('change',validateDate);
 	btnPay.addEventListener('click', placeOrder);
 	inputCvv.addEventListener('keyup',validateCvv);
 	inputCvv.addEventListener('keydown',validateNumber);
@@ -38,7 +42,7 @@
 	function validateNumber(e) {
 		if (e.keyCode !== 8 && (e.keyCode < 48 || e.keyCode > 57)){
 			e.preventDefault();
-		}	
+		};
 	};
 	function validateLetter(e) {
 		var validateName = e.key;
@@ -90,8 +94,27 @@
 			isValidateCvv = true;
 		}
 	};
+
+	
+
+	function showTotalPrice(e) {
+		var numberQuantity =  this.value;
+		var defaultPriceOne = document.getElementById('default-price-one');
+		var numberProductOne = priceProductOne.innerText.replace('$',' ');
+		var total;
+		console.log(numberProductOne);
+		
+		if(numberQuantity.trim().length > 0) {
+			total = parseInt(numberQuantity) * parseInt(numberProductOne);
+			priceProductOne.innerText = '$' + total.toString();
+		}else{
+			// buscar expresion regular
+			priceProductOne.innerText = defaultPriceOne.innerText;
+		}
+	};
 	function placeOrder() {
-		if(isValidate && isValidateCvv && isValidateNameCard && isValidateDate){
+		var validate = isValidate && isValidateCvv && isValidateNameCard && isValidateDate
+		if(validate){
 			swal(
 			  'Good job!',
 			  'Pedido Finalizado',

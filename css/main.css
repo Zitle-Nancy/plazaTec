@@ -61,7 +61,7 @@ body{
 }
 .product {
     border-top: 3px solid #eee;
-    height: 200px;
+    height: 240px;
 }
 .product:last-child {
     border-bottom: 3px solid #eee;
@@ -77,6 +77,7 @@ body{
 .product-description {
     flex-direction: column;
     justify-content: center;
+    padding-top: 5%;
 }
 .right {
     float: right;
@@ -106,4 +107,8 @@ body{
 }
 .btn-width {
     width:100%;
+}
+.input-quantity{
+    display: inline-block;
+    width: 30%;
 }
