@@ -97,47 +97,16 @@
 	function showTotalPrice(e) {
 		var numberQuantity =  this.value;
 		var total;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> mobile-first
 		var defaultPriceOne = document.getElementById('default-price-one');
-		
 		if(numberQuantity.trim().length > 0 && numberQuantity !== " ") {
 			var numberProductOne = priceProductOne.innerText.replace(/\$?[\$\,]/g, '');
 			total = parseFloat(numberQuantity) * parseFloat(numberProductOne);
-<<<<<<< HEAD
 			priceProductOne.innerText = '$' + total.toFixed(2).toString();
-=======
-			priceProductOne.innerText = '$' + total.toString();
->>>>>>> mobile-first
 			console.log(numberProductOne);
 		}else{
 			// buscar expresion regular
 			priceProductOne.innerText = defaultPriceOne.innerText;
 		}
-<<<<<<< HEAD
-=======
-		var numberProduct;
-		var defaultPrice = document.getElementsByClassName('default-price');
-		for (var k = 0; k < priceProduct.length; k++) {
-			numberProduct = priceProduct[k].innerText.replace(/\$?[\$\,]/g, '');
-			if(numberQuantity.trim().length > 0 && numberQuantity !== " ") {
-				
-				total = parseFloat(inputQuantity) * parseFloat(numberProduct);
-				priceProduct[k].innerText = '$' + total.toString();
-				console.log(numberProduct);
-			}else{
-				// buscar expresion regular
-				for(var ePrice = 0; ePrice < defaultPrice.length; ePrice++){
-					priceProduct[k].innerText = defaultPrice[ePrice].innerText;
-				}
-				
-			}
-		};
->>>>>>> mobile-first
-=======
->>>>>>> mobile-first
 	};
 	function placeOrder() {
 		var validate = isValidate && isValidateCvv && isValidateNameCard && isValidateDate
