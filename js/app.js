@@ -102,7 +102,7 @@
 		if(numberQuantity.trim().length > 0 && numberQuantity !== " ") {
 			var numberProductOne = priceProductOne.innerText.replace(/\$?[\$\,]/g, '');
 			total = parseFloat(numberQuantity) * parseFloat(numberProductOne);
-			priceProductOne.innerText = '$' + total.toString();
+			priceProductOne.innerText = '$' + total.toFixed(2).toString();
 			console.log(numberProductOne);
 		}else{
 			// buscar expresion regular
