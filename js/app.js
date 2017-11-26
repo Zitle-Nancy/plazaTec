@@ -14,8 +14,10 @@
 	var cardMaster = document.getElementById('master-card');
 	var cardAmerica = document.getElementById('america-card');
 	var btnPay = document.getElementById('btn-pay');
-	var inputQuantity = document.getElementsByClassName('input-quantity');
-	var priceProduct = document.getElementsByClassName('price-product');
+	var quantityProductOne = document.getElementById('quantity-product-one');
+	var priceProductOne = document.getElementById('price-product-one');
+	quantityProductOne.addEventListener('keydown',validateNumber);
+	quantityProductOne.addEventListener('keyup',showTotalPrice);
 	month.addEventListener('change',validateDate);
 	year.addEventListener('change',validateDate);
 	btnPay.addEventListener('click', placeOrder);
@@ -28,12 +30,7 @@
 	for (var i = 0; i < longitud; i++) {
 		radioButton[i].addEventListener('change', getFormCard);
 	};
-
-	for (var j = 0; j < inputQuantity.length; j++) {
-		inputQuantity[j].addEventListener('keydown',validateNumber);
-		inputQuantity[j].addEventListener('keyup',showTotalPrice);
-	};
-
+	
 	function getFormCard() {
 		var formCard = document.getElementById('form-card');
 		if (this.id === 'card' && this.checked) {
@@ -101,17 +98,25 @@
 		var numberQuantity =  this.value;
 		var total;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> mobile-first
 		var defaultPriceOne = document.getElementById('default-price-one');
 		
 		if(numberQuantity.trim().length > 0 && numberQuantity !== " ") {
 			var numberProductOne = priceProductOne.innerText.replace(/\$?[\$\,]/g, '');
 			total = parseFloat(numberQuantity) * parseFloat(numberProductOne);
+<<<<<<< HEAD
 			priceProductOne.innerText = '$' + total.toFixed(2).toString();
+=======
+			priceProductOne.innerText = '$' + total.toString();
+>>>>>>> mobile-first
 			console.log(numberProductOne);
 		}else{
 			// buscar expresion regular
 			priceProductOne.innerText = defaultPriceOne.innerText;
 		}
+<<<<<<< HEAD
 =======
 		var numberProduct;
 		var defaultPrice = document.getElementsByClassName('default-price');
@@ -130,6 +135,8 @@
 				
 			}
 		};
+>>>>>>> mobile-first
+=======
 >>>>>>> mobile-first
 	};
 	function placeOrder() {
