@@ -94,19 +94,16 @@
 			isValidateCvv = true;
 		}
 	};
-
-	
-
 	function showTotalPrice(e) {
 		var numberQuantity =  this.value;
-		var defaultPriceOne = document.getElementById('default-price-one');
-		var numberProductOne = priceProductOne.innerText.replace('$',' ');
 		var total;
-		console.log(numberProductOne);
+		var defaultPriceOne = document.getElementById('default-price-one');
 		
-		if(numberQuantity.trim().length > 0) {
-			total = parseInt(numberQuantity) * parseInt(numberProductOne);
+		if(numberQuantity.trim().length > 0 && numberQuantity !== " ") {
+			var numberProductOne = priceProductOne.innerText.replace(/\$?[\$\,]/g, '');
+			total = parseFloat(numberQuantity) * parseFloat(numberProductOne);
 			priceProductOne.innerText = '$' + total.toString();
+			console.log(numberProductOne);
 		}else{
 			// buscar expresion regular
 			priceProductOne.innerText = defaultPriceOne.innerText;
