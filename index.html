@@ -73,6 +73,9 @@
 					<span id="master-card" class="hidden">
 						<img class="images-card hidden" src="img/master.png" alt="Mastercard">
 					</span>
+					<span id="america-card" class="hidden">
+						<img class="images-card hidden" src="img/america.png" alt="American Express">
+					</span>
 				</div>	
 				<div class="row margin-top hidden" id="form-card">
 					<form  class="col-offset-1 col-10">
@@ -100,8 +103,8 @@
 							<label class="label">
 								Fecha de expiración
 							</label>
-							<select id="mes" class="input-form select">
-								<option disabled selected>Mes</option>
+							<select id="month" class="input-form select">
+								<option value = "0" disabled selected>Mes</option>
 								<option value="1">01</option>
 								<option value="2">02</option>
 								<option value="3">03</option>
@@ -115,8 +118,8 @@
 								<option value="11">11</option>
 								<option value="12">12</option>
 							</select>
-							<select id="anio" class="input-form select">
-								<option disabled selected>Año</option>
+							<select id="year" class="input-form select">
+								<option value = "0" disabled selected>Año</option>
 								<option value="1">2024</option>
 								<option value="2">2023</option>
 								<option value="3">2022</option>
@@ -130,7 +133,7 @@
 						<div class="form-group">
 							<label class="label">CVV</label>
 							<input id="input-cvv"
-							maxlength="4" 
+								   maxlength="4" 
 								   class="input-form"
 								   type="text" 
 								   required>
@@ -171,9 +174,21 @@
 							completo, IEEE 802.11n, Android, Pizarra, Android 6.0, Negro, Gris)
 						</p>
 						<br>
+						<span>Precio Unitario</span>
+						<!--$3,380.95-->
+						<strong class="right" id="default-price-one">$3,380.95</strong>
+						<br>
 						<p>
-							<label>Cantidad</label> 2
-							<strong class="right">$3,380.95</strong>
+							<label>Cantidad</label>
+							<span><input class="input-form input-quantity"
+										 type="text" 
+										 id="quantity-product-one">
+							</span>
+							
+							<strong class="right" 
+								    id="price-product-one">
+								    	$3,380.95
+							</strong>
 						</p>
 					</div>
 				</div>
@@ -219,7 +234,7 @@
 				</div>
 				<div class="row">
 					<div class="col-offset-6 col-6">
-						<label class="label">Total:</label>
+						<strong>Total:</strong>
 						<strong class="right">$5325.26</strong>
 					</div>
 				</div>
