@@ -1,15 +1,15 @@
 (function(){
-	var validate = false;
+	var validate;
 	var radioButton = document.getElementsByClassName('radio');
 	var longitud = radioButton.length;
 	var inputCard = document.getElementById('input-card');
-	var inputCardCame = document.getElementById('input-card-name');
+	var inputCardName = document.getElementById('input-card-name');
 	var inputCvv = document.getElementById('input-cvv');
 	var btnPay = document.getElementById('btn-pay');
 	btnPay.addEventListener('click', placeOrder);
 	inputCvv.addEventListener('keyup',validateCvv);
 	inputCvv.addEventListener('keydown',validateNumber);
-	inputCardCame.addEventListener('keydown',validateLetter);
+	inputCardName.addEventListener('keydown',validateLetter);
 	inputCard.addEventListener('keyup',validateCardNumber);
 	inputCard.addEventListener('keydown',validateNumber);
 
@@ -47,19 +47,22 @@
 			validate = true;
 		} else {
 			cardVisa.classList.add('hidden');
+			validate = false;
 		}
 		if (regMasterCard.test(numberCard)){
 			cardMaster.classList.remove('hidden');
 			validate = true;
 		} else{
 			cardMaster.classList.add('hidden');
+			validate = false;
 		}
-		// console.log(this.value);
 	};
 	function validateCvv(e){
 		var regCvv = /^[0-9]{3,4}$/;
 		if(!regCvv.test(this.value)){
 			e.preventDefault();
+			validate = false;
+		}else{
 			validate = true;
 		}
 	};
@@ -71,13 +74,17 @@
 			  'Pedido Finalizado',
 			  'success'
 			)
+			inputCard.value = " ";
+			inputCardName.value = " ";
+			inputCvv.value = " ";
 		}else{
 			swal(
 			  'Oops...',
-			  'Faltan datos por completar',
+			  'Faltan datos por completar o los datos son incorrectos',
 			  'error'
 			)
 		}
 	};
+
 
 })();
