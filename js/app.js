@@ -19,10 +19,8 @@
 	
 	function getFormCard() {
 		var formCard = document.getElementById('form-card');
-
 		if (this.id === 'card' && this.checked) {
 			formCard.classList.remove('hidden');  
-			validate = true;
 		} else {
 			formCard.classList.add('hidden');  
 		}
@@ -68,7 +66,7 @@
 
 	function placeOrder(){
 		if(validate){
-						swal(
+			swal(
 			  'Good job!',
 			  'Pedido Finalizado',
 			  'success'
@@ -80,6 +78,6 @@
 			  'error'
 			)
 		}
-	}
+	};
 
 })();
