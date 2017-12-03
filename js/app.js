@@ -14,10 +14,7 @@
 	var cardMaster = document.getElementById('master-card');
 	var cardAmerica = document.getElementById('america-card');
 	var btnPay = document.getElementById('btn-pay');
-	var quantityProductOne = document.getElementById('quantity-product-one');
-	var priceProductOne = document.getElementById('price-product-one');
-	quantityProductOne.addEventListener('keydown',validateNumber);
-	quantityProductOne.addEventListener('keyup',showTotalPrice);
+	var inputQuantity = document.getElementsByClassName('input-quantity');
 	month.addEventListener('change',validateDate);
 	year.addEventListener('change',validateDate);
 	btnPay.addEventListener('click', placeOrder);
@@ -30,7 +27,10 @@
 	for (var i = 0; i < longitud; i++) {
 		radioButton[i].addEventListener('change', getFormCard);
 	};
-	
+	for (var element = 0; element < inputQuantity.length; element ++) {
+		inputQuantity[element].addEventListener('keydown', validateNumber);
+		inputQuantity[element].addEventListener('keyup', showTotalPrice);
+	};
 	function getFormCard() {
 		var formCard = document.getElementById('form-card');
 		if (this.id === 'card' && this.checked) {
@@ -94,6 +94,7 @@
 		}
 	};
 	function showTotalPrice(e) {
+		console.log(this);
 		var numberQuantity =  this.value;
 		var defaultPrice = this.parentElement.parentElement.previousElementSibling.previousElementSibling.innerText;
 		var priceProduct = this.parentElement.nextElementSibling;
@@ -102,7 +103,6 @@
 			var numberProduct = defaultPrice.replace(/\$?[\$\,]/g, '');
 			total = parseFloat(numberQuantity) * parseFloat(numberProduct);
 			priceProduct.innerText = '$' + total.toFixed(2).toString();
-			// console.log(numberProductOne);
 		}else{
 			priceProduct.innerText = defaultPrice;
 		}
