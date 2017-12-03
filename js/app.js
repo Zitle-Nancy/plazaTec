@@ -54,7 +54,6 @@
 		if(!regLetter.test(validateName)){
 			e.preventDefault();
 		};
-		
 	};
 	function validateDate() {
 		if((month.value && year.value) > 0){
@@ -96,17 +95,16 @@
 	};
 	function showTotalPrice(e) {
 		var numberQuantity =  this.value;
+		var defaultPrice = this.parentElement.parentElement.previousElementSibling.previousElementSibling.innerText;
+		var priceProduct = this.parentElement.nextElementSibling;
 		var total;
-		var defaultPriceOne = document.getElementById('default-price-one');
-		
 		if(numberQuantity.trim().length > 0 && numberQuantity !== " ") {
-			var numberProductOne = priceProductOne.innerText.replace(/\$?[\$\,]/g, '');
-			total = parseFloat(numberQuantity) * parseFloat(numberProductOne);
-			priceProductOne.innerText = '$' + total.toString();
-			console.log(numberProductOne);
+			var numberProduct = defaultPrice.replace(/\$?[\$\,]/g, '');
+			total = parseFloat(numberQuantity) * parseFloat(numberProduct);
+			priceProduct.innerText = '$' + total.toFixed(2).toString();
+			// console.log(numberProductOne);
 		}else{
-			// buscar expresion regular
-			priceProductOne.innerText = defaultPriceOne.innerText;
+			priceProduct.innerText = defaultPrice;
 		}
 	};
 	function placeOrder() {
@@ -137,6 +135,4 @@
 			)
 		}
 	};
-
-
 })();
