@@ -14,6 +14,7 @@
 	var cardMaster = document.getElementById('master-card');
 	var cardAmerica = document.getElementById('america-card');
 	var btnPay = document.getElementById('btn-pay');
+	var sumAllPrice = document.getElementById('sum-all-price');
 	var inputQuantity = document.getElementsByClassName('input-quantity');
 	month.addEventListener('change',validateDate);
 	year.addEventListener('change',validateDate);
@@ -93,20 +94,34 @@
 			isValidateCvv = true;
 		}
 	};
+	var totalPriceProduct = [];
 	function showTotalPrice(e) {
-		console.log(this);
+		var sumAllPay = 0; 
 		var numberQuantity =  this.value;
 		var defaultPrice = this.parentElement.parentElement.previousElementSibling.previousElementSibling.innerText;
 		var priceProduct = this.parentElement.nextElementSibling;
 		var total;
 		if(numberQuantity.trim().length > 0 && numberQuantity !== " ") {
 			var numberProduct = defaultPrice.replace(/\$?[\$\,]/g, '');
-			total = parseFloat(numberQuantity) * parseFloat(numberProduct);
-			priceProduct.innerText = '$' + total.toFixed(2).toString();
+			total = (parseFloat(numberQuantity) * parseFloat(numberProduct)).toFixed(2);
+			priceProduct.innerText = '$' + total.toString();
+			// este codigo lo tengo que sacar de esta funcion 
+			totalPriceProduct.push(Number(total));
+			for(var item = 0; item < totalPriceProduct.length; item ++){
+				sumAllPay += totalPriceProduct[item];	
+			};
+			console.log(totalPriceProduct);
+			sumAllPrice.innerText = sumAllPay;
+		    console.log(sumAllPay);
+			// fin codigo 
 		}else{
 			priceProduct.innerText = defaultPrice;
+			totalPriceProduct = [];
+			sumAllPrice.innerText = "$0";
 		}
 	};
+	
+
 	function placeOrder() {
 		var validate = isValidate && isValidateCvv && isValidateNameCard && isValidateDate
 		if(validate){
