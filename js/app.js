@@ -118,7 +118,7 @@
 			price = productPrice[i].innerText.replace(/\$?[\$\,|C]/g, '');
 			totalPrice += Number(price);
 		}
-		sumAllPrice.innerText = totalPrice;
+		sumAllPrice.innerText = '$' + totalPrice.toFixed(2).toString();
 
 	};
 
