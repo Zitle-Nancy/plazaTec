@@ -16,6 +16,7 @@
 	var btnPay = document.getElementById('btn-pay');
 	var sumAllPrice = document.getElementById('sum-all-price');
 	var inputQuantity = document.getElementsByClassName('input-quantity');
+	var productPrice = document.getElementsByClassName('product-price');
 	month.addEventListener('change',validateDate);
 	year.addEventListener('change',validateDate);
 	btnPay.addEventListener('click', placeOrder);
@@ -94,33 +95,32 @@
 			isValidateCvv = true;
 		}
 	};
-	var totalPriceProduct = [];
+
 	function showTotalPrice(e) {
-		var sumAllPay = 0; 
 		var numberQuantity =  this.value;
 		var defaultPrice = this.parentElement.parentElement.previousElementSibling.previousElementSibling.innerText;
 		var priceProduct = this.parentElement.nextElementSibling;
-		var total;
+		var total = 0;
 		if(numberQuantity.trim().length > 0 && numberQuantity !== " ") {
-			var numberProduct = defaultPrice.replace(/\$?[\$\,]/g, '');
+			var numberProduct = defaultPrice.replace(/\$?[\$\,|C]/g, '');
 			total = (parseFloat(numberQuantity) * parseFloat(numberProduct)).toFixed(2);
 			priceProduct.innerText = '$' + total.toString();
-			// este codigo lo tengo que sacar de esta funcion 
-			totalPriceProduct.push(Number(total));
-			for(var item = 0; item < totalPriceProduct.length; item ++){
-				sumAllPay += totalPriceProduct[item];	
-			};
-			console.log(totalPriceProduct);
-			sumAllPrice.innerText = sumAllPay;
-		    console.log(sumAllPay);
-			// fin codigo 
 		}else{
-			priceProduct.innerText = defaultPrice;
-			totalPriceProduct = [];
-			sumAllPrice.innerText = "$0";
+			priceProduct.innerText = "$0";
 		}
+		calculateTotalPrice();
 	};
 	
+	function calculateTotalPrice() {
+		var totalPrice = 0;
+		var price;
+		for (var i = 0 ; i < productPrice.length; i++){
+			price = productPrice[i].innerText.replace(/\$?[\$\,|C]/g, '');
+			totalPrice += Number(price);
+		}
+		sumAllPrice.innerText = totalPrice;
+
+	};
 
 	function placeOrder() {
 		var validate = isValidate && isValidateCvv && isValidateNameCard && isValidateDate
