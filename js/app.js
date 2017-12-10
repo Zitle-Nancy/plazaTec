@@ -14,10 +14,9 @@
 	var cardMaster = document.getElementById('master-card');
 	var cardAmerica = document.getElementById('america-card');
 	var btnPay = document.getElementById('btn-pay');
-	var quantityProductOne = document.getElementById('quantity-product-one');
-	var priceProductOne = document.getElementById('price-product-one');
-	quantityProductOne.addEventListener('keydown',validateNumber);
-	quantityProductOne.addEventListener('keyup',showTotalPrice);
+	var sumAllPrice = document.getElementById('sum-all-price');
+	var inputQuantity = document.getElementsByClassName('input-quantity');
+	var productPrice = document.getElementsByClassName('product-price');
 	month.addEventListener('change',validateDate);
 	year.addEventListener('change',validateDate);
 	btnPay.addEventListener('click', placeOrder);
@@ -30,7 +29,10 @@
 	for (var i = 0; i < longitud; i++) {
 		radioButton[i].addEventListener('change', getFormCard);
 	};
-	
+	for (var element = 0; element < inputQuantity.length; element ++) {
+		inputQuantity[element].addEventListener('keydown', validateNumber);
+		inputQuantity[element].addEventListener('keyup', showTotalPrice);
+	};
 	function getFormCard() {
 		var formCard = document.getElementById('form-card');
 		if (this.id === 'card' && this.checked) {
@@ -54,7 +56,6 @@
 		if(!regLetter.test(validateName)){
 			e.preventDefault();
 		};
-		
 	};
 	function validateDate() {
 		if((month.value && year.value) > 0){
@@ -94,21 +95,33 @@
 			isValidateCvv = true;
 		}
 	};
+
 	function showTotalPrice(e) {
 		var numberQuantity =  this.value;
-		var total;
-		var defaultPriceOne = document.getElementById('default-price-one');
-		
+		var defaultPrice = this.parentElement.parentElement.previousElementSibling.previousElementSibling.innerText;
+		var priceProduct = this.parentElement.nextElementSibling;
+		var total = 0;
 		if(numberQuantity.trim().length > 0 && numberQuantity !== " ") {
-			var numberProductOne = priceProductOne.innerText.replace(/\$?[\$\,]/g, '');
-			total = parseFloat(numberQuantity) * parseFloat(numberProductOne);
-			priceProductOne.innerText = '$' + total.toFixed(2).toString();
-			console.log(numberProductOne);
+			var numberProduct = defaultPrice.replace(/\$?[\$\,|C]/g, '');
+			total = (parseFloat(numberQuantity) * parseFloat(numberProduct)).toFixed(2);
+			priceProduct.innerText = '$' + total.toString();
 		}else{
-			// buscar expresion regular
-			priceProductOne.innerText = defaultPriceOne.innerText;
+			priceProduct.innerText = "$0";
 		}
+		calculateTotalPrice();
 	};
+	
+	function calculateTotalPrice() {
+		var totalPrice = 0;
+		var price;
+		for (var i = 0 ; i < productPrice.length; i++){
+			price = productPrice[i].innerText.replace(/\$?[\$\,|C]/g, '');
+			totalPrice += Number(price);
+		}
+		sumAllPrice.innerText = totalPrice;
+
+	};
+
 	function placeOrder() {
 		var validate = isValidate && isValidateCvv && isValidateNameCard && isValidateDate
 		if(validate){
@@ -137,6 +150,4 @@
 			)
 		}
 	};
-
-
 })();
